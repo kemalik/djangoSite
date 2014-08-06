@@ -1,0 +1,4 @@
+#all ignored files and foldes
+
+/test/
+*.pyc
