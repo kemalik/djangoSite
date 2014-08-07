@@ -24,12 +24,14 @@ def see_the_text(step, text, byid):
     element = world.browser.find_element_by_id(byid)
     assert text in element.text, element.text
 
-@step(r'fill the field named "(.*)" with "(.*)"')
-def fill_the_field_named(step, name, username):
-	field = world.browser.find_element_by_name(name)
-	field.send_keys(username)
+
+@step(r'fill the field named "(.*)" with value "(.*)"')
+def fill_the_field_named(step, name, value):
+    field = world.browser.find_element_by_name(name)
+    field.send_keys(value)
+
 
 @step(r'click on the link "(.*)"')
 def click_on_the_link(step, name):
-	link = world.browser.find_element_by_link_text(name)
-	link.send_keys(Keys.ENTER)
+    link = world.browser.find_element_by_link_text(name)
+    link.send_keys(Keys.ENTER)
