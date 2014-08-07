@@ -7,6 +7,6 @@ def prepare_browser_driver(variables):
     world.browser = webdriver.Firefox()
 
 
-@after.harvest
+'''@after.harvest
 def destroy_browser(results):
-    world.browser.close()
+    world.browser.close()'''

@@ -6,5 +6,5 @@ Feature: Authentication
 
 	Scenario: Log in with the empty data
 		Given I access to page "/admin"
-		And I click on the button by css ".submit-row input"
-		Then I should see text "This field is required" by id "content"
+		And I click on the button by css-selector ".submit-row input"
+		Then I see the text "This field is required" by id "content"
