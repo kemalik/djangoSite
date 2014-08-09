@@ -43,3 +43,14 @@ Feature: Authentication
 			| password | blabla |
 		And I click on the element by css-selector ".submit-row input"
 		Then I see the text "Please enter the correct username and password" by id "content"
+
+	Scenario: Admin page
+		Given I log in
+		And I see the links:
+			| name   		  |
+			| Users  		  |
+			| Groups          |
+			| Change password |
+			| Log out 		  |
+			| Add  			  |
+			| Change 		  |
