@@ -6,17 +6,16 @@ Feature: Publishing polls
 
     Scenario: Add new poll
         Given I log in
-        And I click on the links:
-            | name  |
-            | Polls |
-            | Add   |
-            | Show  |
-            | Today |
-            | Now   |
-        And fill the form:
-			| name                     | value  |
-			| question                 | Test ? |
-			| choice_set-0-choice_text | first  |
-			| choice_set-1-choice_text | second |
-		And I click element by name "_save"
-		Then I see the text "The poll "Test ?" was added successfully" by css-path ".success"
+        I add poll "New poll"
+
+	Scenario: Delete poll
+	    Given I log in
+	    I add poll "For delete"
+	    And I click on the links:
+            | name   |
+            | Polls  |
+            | Change |
+            | Test ? |
+            | Delete |
+        And I click on the element by css-selector "form div input[type="submit"]"
+        Then I see the text "The poll "Test ?" was deleted successfully" by css-path ".success"
