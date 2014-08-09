@@ -15,6 +15,12 @@ def click_on_the_link(step, name):
     assert link, 'Link named %s were no found' % name
 
 
+@step(r'click on the links')
+def click_on_the_links(step):
+    for data in step.hashes:
+        link = world.browser.find_element_by_link_text(data['name'])
+        link.click()
+        assert link, 'Link named %s were no found' % data['name']
 
 @step(r'click element by name "(.*)"')
 def click__element_by_name(step, name):

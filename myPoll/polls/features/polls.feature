@@ -6,11 +6,13 @@ Feature: Publishing polls
 
     Scenario: Add new poll
         Given I log in
-        And I click on the link "Polls"
-        And I click on the link "Add"
-        And I click on the link "Show"
-        And I click on the link "Today"
-        And I click on the link "Now"
+        And I click on the links:
+            | name  |
+            | Polls |
+            | Add   |
+            | Show  |
+            | Today |
+            | Now   |
         And fill the form:
 			| name                     | value  |
 			| question                 | Test ? |
