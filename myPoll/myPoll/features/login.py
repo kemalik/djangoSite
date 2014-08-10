@@ -38,6 +38,7 @@ def fill_the_form(step):
     for data in step.hashes:
         step.given(r'fill the field named "%s" with value "%s"' % (data['name'], data['value']))
 
+
 @step(r'click on the element by css-selector "(.*)"')
 def click_on_the_button(step, name):
     element = world.browser.find_element_by_css_selector(name)

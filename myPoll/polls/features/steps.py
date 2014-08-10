@@ -1,5 +1,4 @@
 from lettuce import *
-from selenium.webdriver.common.keys import Keys
 
 
 @step(r'see the link "(.*)"')
@@ -15,11 +14,13 @@ def click_on_the_links(step):
         link.click()
         assert link, 'Link named %s were no found' % data['name']
 
+
 @step(r'click element by name "(.*)"')
 def click__element_by_name(step, name):
     element = world.browser.find_element_by_name(name)
     element.click()
     assert element, 'Element named %s were no found' % name
+
 
 @step(r'see the text "(.*)" by css-path "(.*)"')
 def see_the_submit_button(step, text, css_path):
