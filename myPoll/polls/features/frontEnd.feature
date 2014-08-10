@@ -20,3 +20,22 @@ Feature: Client side of polls
         And I click on the element by css-selector "form div input[type="submit"]"
         And I access to page "/polls"
         Then I do not see the text "Will be deleted?"
+
+    Scenario: Exist back link when click vote
+        Given I log in
+        And I add poll "Test back link"
+        And I access to page "/polls"
+        And click on the link "Test back link"
+        And click element by name "choice"
+        And I click on the element by css-selector "form input[type="submit"]"
+        Then I see the link "Vote again?"
+
+
+    Scenario: Exist back link when variant not choice
+        Given I log in
+        And I add poll "Test back link"
+        And I access to page "/polls"
+        And click on the link "Test back link"
+        And I click on the element by css-selector "form input[type="submit"]"
+        Then I see the link "Vote again?"
+
