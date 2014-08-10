@@ -1,4 +1,4 @@
-from lettuce import before, world
+from lettuce import before, after, world
 from selenium import webdriver
 
 
