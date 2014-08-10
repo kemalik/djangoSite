@@ -42,7 +42,7 @@ def fill_the_form(step):
 @step(r'click on the element by css-selector "(.*)"')
 def click_on_the_button(step, name):
     element = world.browser.find_element_by_css_selector(name)
-    element.send_keys(Keys.ENTER)
+    element.click()
 
 
 @step(r'see the text "(.*)" by id "(.*)"')
@@ -60,7 +60,7 @@ def fill_the_field_named(step, name, value):
 @step(r'click on the link "(.*)"')
 def click_on_the_link(step, name):
     link = world.browser.find_element_by_link_text(name)
-    link.send_keys(Keys.ENTER)
+    link.click()
 
 
 @step(r'fill the form')
