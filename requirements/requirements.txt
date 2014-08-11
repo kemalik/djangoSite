@@ -1,0 +1,7 @@
+# Install with: 'pip install -r requirements.txt'
+
+Django==1.6.5
+lettuce==0.2.19
+selenium==2.42.1
+
+-e git+http://github.com/kemalik/djangoSite.git/#egg=djangoSite
