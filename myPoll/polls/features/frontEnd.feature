@@ -31,11 +31,10 @@ Feature: Client side of polls
         Then I see the link "Vote again?"
 
 
-    Scenario: Exist back link when variant not choice
+    Scenario: Exist error when variant not choice
         Given I log in
-        And I add poll "Test back link"
+        And I add poll "Test error msg"
         And I access to page "/polls"
-        And click on the link "Test back link"
+        And click on the link "Test error msg"
         And I click on the element by css-selector "form input[type="submit"]"
-        Then I see the link "Vote again?"
-
+        Then I see the text "You didn't select a choice" by css-path "body p"'
