@@ -1,88 +1,89 @@
+# -*- coding: utf-8 -*-
+
 from lettuce import *
 from lettuce.django import django_url
-from selenium.webdriver.common.keys import Keys
 
 
-@step(r'access to page "(.*)"')
+@step(u'получил доступ к странице "(.*)"')
 def access_to_page(step, page):
     world.browser.get(django_url(page))
 
 
-@step(r'see the title "(.*)"')
+@step(u'вижу заголовок "(.*)"')
 def see_title(step, title):
     assert world.browser.title == title
 
 
-@step(r'see the element by css-path "(.*)"')
+@step(u'вижу элемент по css-путям "(.*)"')
 def see_the_submit_button(step, css_path):
     element = world.browser.find_element_by_css_selector(css_path)
-    assert element, 'no element found by css-selector %s' % css_path
+    assert element, u'не найден элемент по css-путям %s' % css_path
 
 
-@step(r'see the form field "(.*)"')
+@step(u'вижу поле ввода "(.*)"')
 def see_the_form_field(step, field_name):
     form_field = world.browser.find_element_by_name(field_name)
-    assert form_field, 'no form field named %s were found' % field_name
+    assert form_field, u'не найден элемент %s' % field_name
 
 
-@step(r'see the log in form')
+@step(u'вижу окно входа')
 def see_the_login_form(step):
-    login = step.given(r'see the form field "username"')
-    password = step.given(r'see the form field "password"')
-    submit_button = step.given('see the element by css-path ".submit-row input"')
-    assert login and password and submit_button, 'This is no log in form'
+    login = step.given(u'вижу поле ввода "username"')
+    password = step.given(u'вижу поле ввода "password"')
+    submit_button = step.given(u'вижу элемент по css-путям ".submit-row input"')
+    assert login and password and submit_button, u'Это не форма входа'
 
 
-@step(r'fill the form')
+@step(u'заполнил форму')
 def fill_the_form(step):
     for data in step.hashes:
-        step.given(r'fill the field named "%s" with value "%s"' % (data['name'], data['value']))
+        step.given(u'заполнил поле с именем "(.*)" с значением "(.*)"' % (data[u'name'], data[u'value']))
 
 
-@step(r'click on the element by css-selector "(.*)"')
+@step(u'нажимаю по элементу с css-селектором "(.*)"')
 def click_on_the_button(step, name):
     element = world.browser.find_element_by_css_selector(name)
     element.click()
 
 
-@step(r'see the text "(.*)" by id "(.*)"')
+@step(u'вижу текст "(.*)" с id "(.*)"')
 def see_the_text(step, text, byid):
     element = world.browser.find_element_by_id(byid)
     assert text in element.text, element.text
 
 
-@step(r'fill the field named "(.*)" with value "(.*)"')
+@step(u'заполнил поле с именем "(.*)" с значением "(.*)"')
 def fill_the_field_named(step, name, value):
     field = world.browser.find_element_by_name(name)
     field.send_keys(value)
 
 
-@step(r'click on the link "(.*)"')
+@step(u'нажимаю по ссылке "(.*)"')
 def click_on_the_link(step, name):
     link = world.browser.find_element_by_link_text(name)
     link.click()
 
 
-@step(r'fill the form')
+@step(u'заполнил форму')
 def fill_the_form(step):
     for data in step.hashes:
-        step.given(r'fill the field named "%s" with value "%s"' % (data['name'], data['value']))
+        step.given(u'заполнил поле с именем "%s" с значением "%s"' % (data['name'], data['value']))
 
 
-@step(r'see the links')
+@step(u'вижу ссылки')
 def see_the_links(step):
     for data in step.hashes:
         link = world.browser.find_element_by_link_text(data['name'])
-        assert link, 'Link named %s were no found' % data['name']
+        assert link, u'Ссылка с названием %s не был найден' % data['name']
 
 
-@step(r'log in')
+@step(u'вошел')
 def log_in(step):
-    step.given('access to page "/admin"')
-    step.given('see the log in form')
-    step.given('''fill the form:
+    step.given(u'получил доступ к странице "/admin"')
+    step.given(u'вижу окно входа')
+    step.given(u'''заполнил форму:
 			| name     | value |
 			| username | malik |
 			| password | pass  |''')
-    step.given('click on the element by css-selector ".submit-row input"')
-    step.given('see the text "malik" by id "user-tools"')
+    step.given(u'нажимаю по элементу с css-селектором ".submit-row input"')
+    step.given(u'вижу текст "malik" с id "user-tools"')

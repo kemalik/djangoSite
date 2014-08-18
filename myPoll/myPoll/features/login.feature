@@ -2,57 +2,57 @@
 
 Функционал: Authentication
 
-	Сценарий: Test for access log in page
-		Если I access to page "/admin"
-		То I see the title "Log in | Django site admin"
+	Сценарий: Доступ к странице входа
+		Если Я получил доступ к странице "/admin"
+		То Я вижу заголовок "Войти | Административный сайт Django"
 
-    Сценарий: See the log in form
-		Допустим I access to page "/admin"
-		То I see the log in form
+    Сценарий: Форма входа
+		Допустим Я получил доступ к странице "/admin"
+		То Я вижу окно входа
 
-    Сценарий: Log in and out
-        Допустим I access to page "/admin"
-        То I see the log in form
-        И fill the form:
+    Сценарий: Вход и выход
+        Допустим Я получил доступ к странице "/admin"
+        То Я вижу окно входа
+        И заполнил форму:
 			| name     | value |
 			| username | malik |
 			| password | pass  |
-        И I click on the element by css-selector ".submit-row input"
-        То I see the text "malik" by id "user-tools"
-        И I click on the link "Log out"
+        И Я нажимаю по элементу с css-селектором ".submit-row input"
+        То Я вижу текст "malik" с id "user-tools"
+        И Я нажимаю по ссылке "Выйти"
 
-    Сценарий: Log out
-		Если I log in
-		И I click on the link "Log out"
-        То I see the text "Logged out" by id "content"
-        И I see the links:
-			| name   	   |
-			| Home         |
-			| Log in again |
+    Сценарий: Выход
+		Если Я вошел
+		И Я нажимаю по ссылке "Выйти"
+        То Я вижу текст "Не авторизован" с id "content"
+        И Я вижу ссылки:
+			| name   	  |
+			| Начало      |
+			| Войти снова |
 
-	Сценарий: Log in with the empty data
-		Допустим I access to page "/admin"
-		То I see the log in form
-		И I click on the element by css-selector ".submit-row input"
-		То I see the text "This field is required" by id "content"
+	Сценарий: Вход с пустыми полями
+		Допустим Я получил доступ к странице "/admin"
+		То Я вижу окно входа
+		И Я нажимаю по элементу с css-селектором ".submit-row input"
+		То Я вижу текст "Обязательное поле" с id "content"
 
-	Сценарий: Log in with the incorrect value
-		Допустим I access to page "/admin"
-		То I see the log in form
-		И fill the form:
+	Сценарий: Вход с неправильными данными
+		Допустим Я получил доступ к странице "/admin"
+		То Я вижу окно входа
+		И заполнил форму:
 			| name     | value  |
 			| username | blabla |
 			| password | blabla |
-		И I click on the element by css-selector ".submit-row input"
-		То I see the text "Please enter the correct username and password" by id "content"
+		И Я нажимаю по элементу с css-селектором ".submit-row input"
+		То Я вижу текст "Пожалуйста, введите корректные имя пользователя и пароль для аккаунта" с id "content"
 
-	Сценарий: Admin page
-		Допустим I log in
-		И I see the links:
+	Сценарий: Страница андмина
+		Допустим Я вошел
+		И Я вижу ссылки:
 			| name   		  |
-			| Users  		  |
-			| Groups          |
-			| Change password |
-			| Log out 		  |
-			| Add  			  |
-			| Change 		  |
+			| Пользователи	  |
+			| Группы          |
+			| Изменить пароль |
+			| Выйти 		  |
+			| Добавить		  |
+			| Изменить		  |
